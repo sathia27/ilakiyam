@@ -18,9 +18,14 @@ class WordSearch
         if first_line_number > 0
           @book_searches << [first_line_number+1, content_array[first_line_number], book_name]
         end
-        @book_searches << [index_line+1, line.gsub(@word, "<b>#{@word}</b>"), book_name]
+        @book_searches << [index_line+1, line.gsub(@word, "<b style='color:blue'>#{@word}</b>"), book_name]
         if content_array[index_line+2]
-          @book_searches << [index_line+2, content_array[index_line+2], book_name]
+          @book_searches << [index_line+2, content_array[index_line+2]+"<hr/><br/>", book_name]
+        else
+           if @book_searches[1] and @book_searches[1][1]
+             @book_searches[1][1] = @book_searches[1][1] + "<hr/><br />"
+
+           end
         end
       end
       i+=1
