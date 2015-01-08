@@ -14,17 +14,16 @@
         <div class="form-group">
           <input type="text" name="word" placeholder="Search for word" class="form-control" />
         </div>
-        <% @file_list.each do |file| %>
+        <% @file_list.each_with_index do |file, index| %>
           <div class="checkbox">
-            <label><input type="checkbox" name="file" value="<%= file %>"  /> <%= file %></label>
+            <label><input type="checkbox" name="file[<%= index %>]" value="<%= file %>"  /> <%= file %></label>
           </div>
         <% end %>
         <input type="submit" class="btn btn-default" />
       </form>
       <% if(@searches) %>
         <% @searches.each do |search| %>
-          <% puts search.inspect %>
-          <p>Line Number: <%= search[0] %>. <%= search[1] %></p>
+          <p><%= search[2]%> வரி: <%= search[0] %>. <%= search[1] %></p>
           <hr/>
         <% end %>
       <% end %>

@@ -16,11 +16,11 @@ class WordSearch
         index_line = content_array.index(line)
         first_line_number = index_line - 1
         if first_line_number > 0
-          @book_searches << [first_line_number+1, content_array[first_line_number]]
+          @book_searches << [first_line_number+1, content_array[first_line_number], book_name]
         end
-        @book_searches << [index_line+1, line]
+        @book_searches << [index_line+1, line.gsub(@word, "<b>#{@word}</b>"), book_name]
         if content_array[index_line+2]
-          @book_searches << [index_line+2, content_array[index_line+2]]
+          @book_searches << [index_line+2, content_array[index_line+2], book_name]
         end
       end
       i+=1
